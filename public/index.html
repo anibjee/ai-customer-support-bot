@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Customer Support Bot</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="header-content">
+                <div class="bot-info">
+                    <div class="bot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="bot-details">
+                        <h2>Customer Support Bot</h2>
+                        <div class="status">
+                            <span class="status-dot online"></span>
+                            <span class="status-text">Online - Ready to help!</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" id="faqBtn" title="View FAQs">
+                        <i class="fas fa-question-circle"></i>
+                    </button>
+                    <button class="btn-icon" id="clearBtn" title="Clear Chat">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be inserted here -->
+            <div class="welcome-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="sender">Customer Support Bot</span>
+                        <span class="timestamp" id="welcomeTimestamp"></span>
+                    </div>
+                    <div class="message-text">
+                        Welcome! I'm your AI customer support assistant. I can help you with:
+                        <ul>
+                            <li>Account and billing questions</li>
+                            <li>Password resets and login issues</li>
+                            <li>General product information</li>
+                            <li>Technical support</li>
+                        </ul>
+                        How can I assist you today?
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input-container">
+            <div class="quick-actions" id="quickActions">
+                <button class="quick-action-btn" data-message="What are your business hours?">
+                    <i class="fas fa-clock"></i> Business Hours
+                </button>
+                <button class="quick-action-btn" data-message="How do I reset my password?">
+                    <i class="fas fa-key"></i> Reset Password
+                </button>
+                <button class="quick-action-btn" data-message="I need to speak with a human agent">
+                    <i class="fas fa-user"></i> Human Agent
+                </button>
+            </div>
+            
+            <div class="input-area">
+                <div class="message-input-wrapper">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Type your message here..." 
+                        rows="1"
+                        maxlength="1000"
+                    ></textarea>
+                    <div class="input-actions">
+                        <button id="sendBtn" class="send-btn" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="input-footer">
+                    <span class="char-counter">0/1000</span>
+                    <span class="powered-by">Powered by AI</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typing indicator -->
+        <div class="typing-indicator" id="typingIndicator" style="display: none;">
+            <div class="message-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="typing-content">
+                <div class="typing-text">Bot is typing</div>
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Modal -->
+    <div class="modal" id="faqModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Frequently Asked Questions</h3>
+                <button class="modal-close" id="closeFaqModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="faq-search">
+                    <input type="text" id="faqSearch" placeholder="Search FAQs..." />
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="faq-categories">
+                    <button class="category-btn active" data-category="">All</button>
+                    <button class="category-btn" data-category="general">General</button>
+                    <button class="category-btn" data-category="account">Account</button>
+                    <button class="category-btn" data-category="billing">Billing</button>
+                </div>
+                <div class="faq-list" id="faqList">
+                    <!-- FAQs will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Session info -->
+    <div class="session-info" id="sessionInfo">
+        <span>Session: <span id="sessionId">Not connected</span></span>
+        <span class="connection-status" id="connectionStatus">
+            <span class="status-dot offline"></span>
+            Connecting...
+        </span>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
