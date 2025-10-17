@@ -1,6 +1,9 @@
 # AI Customer Support Bot
 
 ## Live Link: https://ai-customer-support-bot.onrender.com/ 
+## Demo Video: https://drive.google.com/file/d/1pRYseMpvE8OyZyIIJDFVanlyHhXwe_OY/view?usp=sharing
+
+
 
 A comprehensive AI-powered customer support chatbot built with Node.js, featuring conversation memory, FAQ matching, escalation handling, and LLM integration.
 
